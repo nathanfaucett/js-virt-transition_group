@@ -20,6 +20,7 @@
     "grunt-jsbeautifier": "^0.2.7"
   },
   "dependencies": {
+    "empty_function": "git://github.com/nathanfaucett/empty_function",
     "extend": "git://github.com/nathanfaucett/extend",
     "for_each": "git://github.com/nathanfaucett/for_each",
     "has": "git://github.com/nathanfaucett/has",

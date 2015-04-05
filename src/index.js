@@ -2,6 +2,7 @@ var virt = require("virt"),
     extend = require("extend"),
     forEach = require("for_each"),
     propTypes = require("prop_types"),
+    emptyFunction = require("empty_function"),
     createTransitionChild = require("./create_transition_child"),
     getChildMapping = require("./get_child_mapping"),
     getMovePositions = require("./get_move_positions"),
@@ -48,6 +49,11 @@ virt.Component.extend(TransitionGroup, "TransitionGroup");
 TransitionGroup.propTypes = {
     component: propTypes.any,
     childFactory: propTypes.func
+};
+
+TransitionGroup.defaultProps = {
+    component: "span",
+    childFactory: emptyFunction.thatReturnsArgument
 };
 
 TransitionGroupPrototype = TransitionGroup.prototype;
