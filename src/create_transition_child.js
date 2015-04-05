@@ -1,6 +1,9 @@
-var View = require("virt/view"),
-    owner = require("virt/owner"),
-    context = require("virt/context");
+var virt = require("virt");
+
+
+var View = virt.View,
+    owner = virt.owner,
+    context = virt.context;
 
 
 module.exports = createTransitionChild;
