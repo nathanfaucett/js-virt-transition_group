@@ -1,4 +1,7 @@
-var isPrimativeView = require("virt/view").isPrimativeView;
+var virt = require("virt");
+
+
+var isPrimativeView = virt.View.isPrimativeView;
 
 
 module.exports = getChildMapping;

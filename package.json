@@ -23,6 +23,7 @@
     "extend": "git://github.com/nathanfaucett/extend",
     "for_each": "git://github.com/nathanfaucett/for_each",
     "has": "git://github.com/nathanfaucett/has",
+    "prop_types": "git://github.com/nathanfaucett/prop_types",
     "virt": "git://github.com/nathanfaucett/virt"
   }
 }

@@ -1,6 +1,7 @@
 var virt = require("virt"),
     extend = require("extend"),
     forEach = require("for_each"),
+    propTypes = require("prop_types"),
     createTransitionChild = require("./create_transition_child"),
     getChildMapping = require("./get_child_mapping"),
     getMovePositions = require("./get_move_positions"),
@@ -43,6 +44,11 @@ function TransitionGroup(props, children, context) {
     };
 }
 virt.Component.extend(TransitionGroup, "TransitionGroup");
+
+TransitionGroup.propTypes = {
+    component: propTypes.any,
+    childFactory: propTypes.func
+};
 
 TransitionGroupPrototype = TransitionGroup.prototype;
 
@@ -248,5 +254,5 @@ TransitionGroupPrototype.render = function() {
         }
     }
 
-    return virt.createView(this.props.tagName, this.props, childrenToRender);
+    return virt.createView(this.props.component, this.props, childrenToRender);
 };
