@@ -1,0 +1,28 @@
+{
+  "name": "virt-transition_group",
+  "version": "0.0.1",
+  "description": "Virt TransitionGroup for the browser and node.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nathanfaucett/virt-transition_group.git"
+  },
+  "main": "src/index.js",
+  "keywords": [
+    "virt-transition_group",
+    "virt-transition_group.js"
+  ],
+  "author": "Nathan Faucett",
+  "license": "BSD-2-Clause",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-jsbeautifier": "^0.2.7"
+  },
+  "dependencies": {
+    "extend": "git://github.com/nathanfaucett/extend",
+    "for_each": "git://github.com/nathanfaucett/for_each",
+    "has": "git://github.com/nathanfaucett/has",
+    "virt": "git://github.com/nathanfaucett/virt"
+  }
+}
