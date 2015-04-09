@@ -14,13 +14,15 @@ function mergeChildMappings(prev, next) {
     next = next || {};
 
     for (prevKey in prev) {
-        if (has(next, prevKey)) {
-            if (pendingKeys.length) {
-                nextKeysPending[prevKey] = pendingKeys;
-                pendingKeys = [];
+        if (has(prev, prevKey)) {
+            if (has(next, prevKey)) {
+                if (pendingKeys.length) {
+                    nextKeysPending[prevKey] = pendingKeys;
+                    pendingKeys = [];
+                }
+            } else {
+                pendingKeys[pendingKeys.length] = prevKey;
             }
-        } else {
-            pendingKeys.push(prevKey);
         }
     }
 
