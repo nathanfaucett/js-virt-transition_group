@@ -1,7 +1,7 @@
 var virt = require("virt");
 
 
-var isPrimativeView = virt.View.isPrimativeView;
+var isPrimitiveView = virt.View.isPrimitiveView;
 
 
 module.exports = getChildMapping;
@@ -16,7 +16,7 @@ function getChildMapping(children) {
     while (i++ < il) {
         child = children[i];
 
-        if (!isPrimativeView(child)) {
+        if (!isPrimitiveView(child)) {
             childMapping = childMapping || {};
             childMapping[child.key] = child;
         }

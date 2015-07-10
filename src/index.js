@@ -44,7 +44,7 @@ function TransitionGroup(props, children, context) {
         return _this.__performMoveDown(key);
     };
 }
-virt.Component.extend(TransitionGroup, "TransitionGroup");
+virt.Component.extend(TransitionGroup, "virt.TransitionGroup");
 
 TransitionGroup.propTypes = {
     component: propTypes.any,
