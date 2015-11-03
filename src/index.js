@@ -1,15 +1,17 @@
 var virt = require("virt"),
+    has = require("has"),
     extend = require("extend"),
-    forEach = require("for_each"),
+    arrayForEach = require("array-for_each"),
     propTypes = require("prop_types"),
     emptyFunction = require("empty_function"),
-    createTransitionChild = require("./create_transition_child"),
-    getChildMapping = require("./get_child_mapping"),
-    getMovePositions = require("./get_move_positions"),
-    mergeChildMappings = require("./merge_child_mappings");
+    createTransitionChild = require("./createTransitionChild"),
+    getChildMapping = require("./getChildMapping"),
+    getMovePositions = require("./getMovePositions"),
+    mergeChildMappings = require("./mergeChildMappings");
 
 
-var TransitionGroupPrototype;
+var Component = virt.Component,
+    TransitionGroupPrototype;
 
 
 module.exports = TransitionGroup;
@@ -18,7 +20,7 @@ module.exports = TransitionGroup;
 function TransitionGroup(props, children, context) {
     var _this = this;
 
-    virt.Component.call(this, props, children, context);
+    Component.call(this, props, children, context);
 
     this.currentlyTransitioningKeys = {};
     this.currentKeyPositions = {};
@@ -44,7 +46,7 @@ function TransitionGroup(props, children, context) {
         return _this.__performMoveDown(key);
     };
 }
-virt.Component.extend(TransitionGroup, "virt.TransitionGroup");
+Component.extend(TransitionGroup, "virt.TransitionGroup");
 
 TransitionGroup.propTypes = {
     component: propTypes.any,
@@ -65,7 +67,6 @@ TransitionGroupPrototype.componentWillReceiveProps = function(nextProps, nextChi
         keysToEnter = this.keysToEnter,
         keysToLeave = this.keysToLeave,
         key, childMappings;
-
 
     childMappings = mergeChildMappings(prevChildMapping, nextChildMapping);
     getMovePositions(this.currentKeyPositions, nextChildMapping, this.keysToMoveUp, this.keysToMoveDown);
@@ -102,16 +103,16 @@ TransitionGroupPrototype.componentDidUpdate = function() {
         keysToMoveDown = this.keysToMoveDown;
 
     this.keysToEnter = [];
-    forEach(keysToEnter, this.performEnter);
+    arrayForEach(keysToEnter, this.performEnter);
 
     this.keysToLeave = [];
-    forEach(keysToLeave, this.performLeave);
+    arrayForEach(keysToLeave, this.performLeave);
 
     this.keysToMoveUp = [];
-    forEach(keysToMoveUp, this.performMoveUp);
+    arrayForEach(keysToMoveUp, this.performMoveUp);
 
     this.keysToMoveDown = [];
-    forEach(keysToMoveDown, this.performMoveDown);
+    arrayForEach(keysToMoveDown, this.performMoveDown);
 };
 
 TransitionGroupPrototype.__performEnter = function(key) {
@@ -247,14 +248,16 @@ TransitionGroupPrototype.__handleMoveDownDone = function(key) {
 };
 
 TransitionGroupPrototype.render = function() {
-    var childrenToRender = [],
+    var localHas = has,
+        childrenToRender = [],
         childFactory = this.props.childFactory,
         children = this.state.children,
         key, child;
 
     if (children) {
         for (key in children) {
-            if ((child = children[key])) {
+            if (localHas(children, key)) {
+                child = children[key];
                 childrenToRender[childrenToRender.length] = createTransitionChild(childFactory(child), key, key);
             }
         }
