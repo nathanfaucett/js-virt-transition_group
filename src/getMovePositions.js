@@ -1,5 +1,5 @@
-var has = require("has"),
-    isNullOrUndefined = require("is_null_or_undefined");
+var has = require("@nathanfaucett/has"),
+    isNullOrUndefined = require("@nathanfaucett/is_null_or_undefined");
 
 
 module.exports = getMovePositions;

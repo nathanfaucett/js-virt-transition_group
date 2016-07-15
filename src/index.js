@@ -1,9 +1,9 @@
-var virt = require("virt"),
-    has = require("has"),
-    extend = require("extend"),
-    arrayForEach = require("array-for_each"),
-    propTypes = require("prop_types"),
-    emptyFunction = require("empty_function"),
+var virt = require("@nathanfaucett/virt"),
+    has = require("@nathanfaucett/has"),
+    extend = require("@nathanfaucett/extend"),
+    arrayForEach = require("@nathanfaucett/array-for_each"),
+    propTypes = require("@nathanfaucett/prop_types"),
+    emptyFunction = require("@nathanfaucett/empty_function"),
     createTransitionChild = require("./createTransitionChild"),
     getChildMapping = require("./getChildMapping"),
     getMovePositions = require("./getMovePositions"),
@@ -122,7 +122,7 @@ TransitionGroupPrototype.__performEnter = function(key) {
     this.currentlyTransitioningKeys[key] = true;
 
     if (component.componentWillEnter) {
-        component.componentWillEnter(function() {
+        component.componentWillEnter(function onComponentWillEnter() {
             return _this.__handleEnterDone(key);
         });
     } else {
@@ -153,7 +153,7 @@ TransitionGroupPrototype.__performLeave = function(key) {
     this.currentlyTransitioningKeys[key] = true;
 
     if (component.componentWillLeave) {
-        component.componentWillLeave(function() {
+        component.componentWillLeave(function onComponentWillLeave() {
             return _this.__handleLeaveDone(key);
         });
     } else {
@@ -192,7 +192,7 @@ TransitionGroupPrototype.__performMoveUp = function(key) {
     this.currentlyTransitioningKeys[key] = true;
 
     if (component.componentWillMoveUp) {
-        component.componentWillMoveUp(function() {
+        component.componentWillMoveUp(function onComponentWillMoveUp() {
             return _this.__handleMoveUpDone(key);
         });
     } else {
@@ -207,7 +207,7 @@ TransitionGroupPrototype.__performMoveDown = function(key) {
     this.currentlyTransitioningKeys[key] = true;
 
     if (component.componentWillMoveDown) {
-        component.componentWillMoveDown(function() {
+        component.componentWillMoveDown(function onComponentWillMoveDown() {
             return _this.__handleMoveDownDone(key);
         });
     } else {
